@@ -28,7 +28,7 @@ if TYPE_CHECKING:
 _RevIdType = Union[str, list[str], tuple[str, ...]]
 _GetRevArg = Union[
     str,
-    Iterable[Optional[str]],
+    Iterable[str | None],
     Iterable[str],
 ]
 _RevisionIdentifierType = Union[str, tuple[str, ...], None]
@@ -37,7 +37,7 @@ _RevisionOrBase = Union["Revision", "Literal['base']"]
 _InterimRevisionMapType = dict[str, "Revision"]
 _RevisionMapType = dict[Union[None, str, tuple[()]], Optional["Revision"]]
 _T = TypeVar("_T")
-_TR = TypeVar("_TR", bound=Optional[_RevisionOrStr])
+_TR = TypeVar("_TR", bound=_RevisionOrStr | None)
 
 _relative_destination = re.compile(r"(?:(.+?)@)?(\w+)?((?:\+|-)\d+)")
 _revision_illegal_chars = ["@", "-", "+", ":"]
