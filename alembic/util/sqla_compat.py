@@ -82,7 +82,7 @@ if TYPE_CHECKING:
     ) -> Callable[[_CompilerProtocol], _CompilerProtocol]: ...
 
 else:
-    from sqlalchemy.ext.compiler import compiles  # noqa: I100,I202
+    from sqlalchemy.ext.compiler import compiles
 
 
 identity_has_dialect_kwargs = issubclass(schema.Identity, DialectKWArgs)
