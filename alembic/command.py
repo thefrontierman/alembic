@@ -372,8 +372,7 @@ def check(config: Config) -> None:
             revision_context=revision_context,
             diffs=diffs,
         )
-    else:
-        config.print_stdout("No new upgrade operations detected.")
+    config.print_stdout("No new upgrade operations detected.")
 
 
 def merge(
