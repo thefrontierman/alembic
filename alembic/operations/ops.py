@@ -2799,7 +2799,7 @@ class MigrationScript(MigrateOperation):
         downgrade_ops: DowngradeOps,
         *,
         message: str | None = None,
-        imports: set[str] = set(),
+        imports: set[str] | None = None,
         head: str | None = None,
         splice: bool | None = None,
         branch_label: _RevIdType | None = None,
@@ -2808,7 +2808,7 @@ class MigrationScript(MigrateOperation):
     ) -> None:
         self.rev_id = rev_id
         self.message = message
-        self.imports = imports
+        self.imports = set[str]() if imports is None else imports
         self.head = head
         self.splice = splice
         self.branch_label = branch_label
