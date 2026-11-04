@@ -372,7 +372,7 @@ def _compare_indexes_and_uniques(
             and conn_obj.unnamed in unnamed_metadata_uniques
         ):
             continue
-        elif removed_name in doubled_constraints:
+        if removed_name in doubled_constraints:
             conn_uq, conn_idx = doubled_constraints[removed_name]
             if (
                 all(
