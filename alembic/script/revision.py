@@ -877,7 +877,7 @@ class RevisionMap:
             map_ = self._revision_map
 
         seen = set()
-        todo: Deque[Revision] = collections.deque()
+        todo: collections.deque[Revision] = collections.deque()
         for target_for in targets:
             target = is_revision(target_for)
             todo.append(target)
