@@ -159,7 +159,6 @@ def _ensure_scope_for_ddl(
     except AttributeError:
         # catch for MockConnection, None
         in_transaction = None
-        pass
 
     # yield outside the catch
     if in_transaction is None:
