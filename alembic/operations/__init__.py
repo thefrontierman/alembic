@@ -7,8 +7,8 @@ from .ops import MigrationScript
 
 __all__ = [
     "AbstractOperations",
-    "Operations",
     "BatchOperations",
     "MigrateOperation",
     "MigrationScript",
+    "Operations",
 ]
