@@ -68,8 +68,7 @@ class SQLiteImpl(DefaultImpl):
                     return True
             elif op[0] not in ("create_index", "drop_index"):
                 return True
-        else:
-            return False
+        return False
 
     def add_constraint(self, const: Constraint, **kw: Any):
         # attempt to distinguish between an
