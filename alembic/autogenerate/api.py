@@ -532,9 +532,7 @@ class RevisionContext:
         config: Config,
         script_directory: ScriptDirectory,
         command_args: dict[str, Any],
-        process_revision_directives: None | (
-            ProcessRevisionDirectiveFn
-        ) = None,
+        process_revision_directives: ProcessRevisionDirectiveFn | None = None,
     ) -> None:
         self.config = config
         self.script_directory = script_directory
