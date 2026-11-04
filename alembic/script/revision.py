@@ -941,12 +941,10 @@ class RevisionMap:
         # Use revision map (ordered dict) key order to pre-sort.
         inserted_order = list(self._revision_map)
 
-        current_heads = list(
-            sorted(
+        current_heads = sorted(
                 {d.revision for d in heads if d.revision in todo},
                 key=inserted_order.index,
             )
-        )
         ancestors_by_idx = [get_ancestors(rev_id) for rev_id in current_heads]
 
         output = []
