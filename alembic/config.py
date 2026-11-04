@@ -947,8 +947,7 @@ class CommandLine:
             for line in help_.split("\n"):
                 if not line.strip():
                     break
-                else:
-                    help_lines.append(line.strip())
+                help_lines.append(line.strip())
         else:
             help_lines = []
 
