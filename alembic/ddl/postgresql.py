@@ -719,11 +719,7 @@ class CreateExcludeConstraintOp(ops.AddConstraintOp):
             where=self.where,
             **self.kw,
         )
-        for (
-            expr,
-            name,
-            oper,
-        ) in excl._render_exprs:
+        for _expr, name, _oper in excl._render_exprs:
             t.append_column(Column(name, NULLTYPE))
         t.append_constraint(excl)
         return excl
