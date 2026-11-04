@@ -1207,10 +1207,7 @@ def _execute_sql(autogen_context: AutogenContext, op: ops.ExecuteSQLOp) -> str:
             "Autogenerate rendering of SQL Expression language constructs "
             "not supported here; please use a plain SQL string"
         )
-    return "{prefix}execute({sqltext!r})".format(
-        prefix=_alembic_autogenerate_prefix(autogen_context),
-        sqltext=op.sqltext,
-    )
+    return f"{_alembic_autogenerate_prefix(autogen_context)}execute({op.sqltext!r})"
 
 
 renderers = default_renderers.branch()
