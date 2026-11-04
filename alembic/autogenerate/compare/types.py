@@ -90,7 +90,7 @@ def _user_compare_type(
             cname,
         )
         return PriorityDispatchResult.STOP
-    elif is_diff is False:
+    if is_diff is False:
         # if user compare type returns False and not None,
         # it means "dont do any more type comparison"
         return PriorityDispatchResult.STOP
