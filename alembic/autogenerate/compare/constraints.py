@@ -42,7 +42,7 @@ if TYPE_CHECKING:
     from ...operations.ops import ModifyTableOps
     from ...runtime.plugins import Plugin
 
-_C = TypeVar("_C", bound=Union[UniqueConstraint, ForeignKeyConstraint, Index])
+_C = TypeVar("_C", bound=UniqueConstraint | ForeignKeyConstraint | Index)
 
 
 log = logging.getLogger(__name__)
