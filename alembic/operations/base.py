@@ -61,7 +61,7 @@ if TYPE_CHECKING:
     from .ops import MigrateOperation
     from ..ddl import DefaultImpl
     from ..runtime.migration import MigrationContext
-__all__ = ("Operations", "BatchOperations")
+__all__ = ("BatchOperations", "Operations")
 _T = TypeVar("_T")
 
 _C = TypeVar("_C", bound=Callable[..., Any])
