@@ -223,7 +223,7 @@ class DefaultImpl(metaclass=ImplMeta):
             if self.literal_binds and not isinstance(
                 construct, schema.DDLElement
             ):
-                compile_kw = dict(compile_kwargs={"literal_binds": True})
+                compile_kw = {"compile_kwargs": {"literal_binds": True}}
             else:
                 compile_kw = {}
 
