@@ -183,7 +183,7 @@ class MigrationContext:
             "version_table", "alembic_version"
         )
         self.version_table_schema = version_table_schema = opts.get(
-            "version_table_schema", None
+            "version_table_schema"
         )
 
         self._start_from_rev: str | None = opts.get("starting_rev")
