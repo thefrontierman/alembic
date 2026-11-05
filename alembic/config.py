@@ -220,10 +220,7 @@ class Config:
 
         """
 
-        if arg:
-            output = str(text) % arg
-        else:
-            output = str(text)
+        output = str(text) % arg if arg else str(text)
 
         util.write_outstream(self.stdout, output, "\n", **self.messaging_opts)
 
