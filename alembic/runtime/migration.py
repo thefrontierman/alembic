@@ -1189,7 +1189,7 @@ class RevisionStep(MigrationStep):
             assert (
                 len(downrev) == 1
             ), "Can't do an UPDATE because downrevision is ambiguous"
-            down_revision = list(downrev)[0]
+            down_revision = next(iter(downrev))
         else:
             down_revision = self.revision._normalized_down_revisions[0]
 
