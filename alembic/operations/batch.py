@@ -512,11 +512,11 @@ class ApplyBatchImpl:
                 self.new_table.insert()
                 .inline()
                 .from_select(
-                    list(
+                    [
                         k
                         for k, transfer in self.column_transfers.items()
                         if "expr" in transfer
-                    ),
+                    ],
                     select(
                         *[
                             transfer["expr"]
