@@ -117,4 +117,4 @@ def format_as_comma(value: str | Iterable[str] | None) -> str:
     elif isinstance(value, Iterable):
         return ", ".join(value)
     else:
-        raise ValueError("Don't know how to comma-format %r" % value)
+        raise ValueError(f"Don't know how to comma-format {value!r}")
