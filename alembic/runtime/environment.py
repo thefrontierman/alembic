@@ -396,10 +396,7 @@ class EnvironmentContext(util.ModuleClsProxy):
             :attr:`.Config.cmd_opts`
 
         """
-        if self.config.cmd_opts is not None:
-            value = self.config.cmd_opts.x or []
-        else:
-            value = []
+        value = self.config.cmd_opts.x or [] if self.config.cmd_opts is not None else []
         if as_dictionary:
             dict_value = {}
             for arg in value:
