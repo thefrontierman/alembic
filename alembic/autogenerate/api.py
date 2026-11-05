@@ -446,11 +446,7 @@ class AutogenContext:
                 else:
                     parent_names["schema_qualified_table_name"] = table_name
 
-        for fn in self._name_filters:
-            if not fn(name, type_, parent_names):
-                return False
-        else:
-            return True
+        return all(fn(name, type_, parent_names) for fn in self._name_filters)
 
     def run_object_filters(
         self,
