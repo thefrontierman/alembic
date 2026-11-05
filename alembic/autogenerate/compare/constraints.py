@@ -766,10 +766,12 @@ def _compare_nullable(
 
     if conn_col_nullable is not metadata_col_nullable:
         if (
-            sqla_compat._server_default_is_computed(
-                metadata_col.server_default, conn_col.server_default
+            (
+                sqla_compat._server_default_is_computed(
+                    metadata_col.server_default, conn_col.server_default
+                )
+                and sqla_compat._nullability_might_be_unset(metadata_col)
             )
-            and sqla_compat._nullability_might_be_unset(metadata_col)
             or (
                 sqla_compat._server_default_is_identity(
                     metadata_col.server_default, conn_col.server_default
