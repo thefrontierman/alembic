@@ -62,7 +62,7 @@ def _compare_check_constraints(
     autogen_context: AutogenContext,
     modify_table_ops: ModifyTableOps,
     schema: Optional[str],
-    tname: Union[quoted_name, str],
+    tname: quoted_name | str,
     conn_table: Optional[Table],
     metadata_table: Optional[Table],
 ) -> PriorityDispatchResult:
