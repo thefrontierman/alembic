@@ -32,7 +32,7 @@ def open_in_editor(
         editor = _find_editor(env)
         check_call([editor, filename])
     except Exception as exc:
-        raise CommandError("Error executing editor (%s)" % (exc,)) from exc
+        raise CommandError(f"Error executing editor ({exc})") from exc
 
 
 def _find_editor(environ: Mapping[str, str]) -> str:
