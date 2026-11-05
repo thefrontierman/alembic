@@ -478,11 +478,7 @@ def _drop_column_comment(
     assert schema_name
     return (
         "exec sp_dropextendedproperty 'MS_Description', "
-        "'schema', {}, 'table', {}, 'column', {}".format(
-            compiler.preparer.quote_schema(schema_name),
-            compiler.preparer.quote(tname),
-            compiler.preparer.quote(cname),
-        )
+        f"'schema', {compiler.preparer.quote_schema(schema_name)}, 'table', {compiler.preparer.quote(tname)}, 'column', {compiler.preparer.quote(cname)}"
     )
 
 
