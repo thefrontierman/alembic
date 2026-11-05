@@ -114,7 +114,7 @@ def _compare_tables(
     metadata_table_names = metadata_table_names_no_dflt_schema
 
     for s, tname in metadata_table_names.difference(conn_table_names):
-        name = "%s.%s" % (s, tname) if s else tname
+        name = f"{s}.{tname}" if s else tname
         metadata_table = tname_to_table[(s, tname)]
         if autogen_context.run_object_filters(
             metadata_table, tname, "table", False, None
@@ -196,7 +196,7 @@ def _compare_tables(
 
     for s, tname in sorted(existing_tables, key=lambda x: (x[0] or "", x[1])):
         s = s or None
-        name = "%s.%s" % (s, tname) if s else tname
+        name = f"{s}.{tname}" if s else tname
         metadata_table = tname_to_table[(s, tname)]
         conn_table = existing_metadata.tables[name]
 
@@ -238,7 +238,7 @@ def _compare_columns(
     autogen_context: AutogenContext,
     inspector: Inspector,
 ) -> Iterator[None]:
-    name = "%s.%s" % (schema, tname) if schema else tname
+    name = f"{schema}.{tname}" if schema else tname
     metadata_col_names = OrderedSet(
         c.name for c in metadata_table.c if not c.system
     )
