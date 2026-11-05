@@ -498,15 +498,13 @@ def visit_column_comment(
                 element.column_name,
                 element.comment,
             )
-        else:
-            return _add_column_comment(
-                compiler,
-                element.schema,
-                element.table_name,
-                element.column_name,
-                element.comment,
-            )
-    else:
-        return _drop_column_comment(
-            compiler, element.schema, element.table_name, element.column_name
+        return _add_column_comment(
+            compiler,
+            element.schema,
+            element.table_name,
+            element.column_name,
+            element.comment,
         )
+    return _drop_column_comment(
+        compiler, element.schema, element.table_name, element.column_name
+    )
