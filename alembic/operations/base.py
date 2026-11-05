@@ -10,7 +10,7 @@ from contextlib import contextmanager
 import re
 import textwrap
 from typing import Any
-from typing import Callable
+from collections.abc import Callable
 from typing import List  # noqa
 from typing import NoReturn
 from typing import overload
