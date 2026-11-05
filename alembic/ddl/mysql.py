@@ -87,7 +87,8 @@ class MySQLImpl(DefaultImpl):
     __dialect__ = "mysql"
 
     transactional_ddl = False
-    type_synonyms = DefaultImpl.type_synonyms + (
+    type_synonyms = (
+        *DefaultImpl.type_synonyms,
         {"BOOL", "TINYINT"},
         {"JSON", "LONGTEXT"},
     )
