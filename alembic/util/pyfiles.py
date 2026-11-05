@@ -121,7 +121,7 @@ def load_python_file(
     elif ext in (".pyc", ".pyo"):
         module = load_module_py(module_id, path)
     else:
-        assert False
+        raise AssertionError()
     return module
 
 
