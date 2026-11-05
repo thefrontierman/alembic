@@ -93,8 +93,7 @@ def pyc_file_from_path(
     for ext in importlib.machinery.BYTECODE_SUFFIXES:
         if pathpath.with_suffix(ext).exists():
             return pathpath.with_suffix(ext)
-    else:
-        return None
+    return None
 
 
 def load_python_file(
