@@ -155,7 +155,7 @@ class MigrationContext:
                 sqla_compat._get_connection_in_transaction(connection)
             )
 
-        self._migrations_fn: None | (Callable[..., Iterable[RevisionStep]]) = (
+        self._migrations_fn: Callable[..., Iterable[RevisionStep]] | None = (
             opts.get("fn")
         )
         self.as_sql = as_sql
