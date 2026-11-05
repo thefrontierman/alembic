@@ -36,7 +36,8 @@ class OracleImpl(DefaultImpl):
     transactional_ddl = False
     batch_separator = "/"
     command_terminator = ""
-    type_synonyms = DefaultImpl.type_synonyms + (
+    type_synonyms = (
+        *DefaultImpl.type_synonyms,
         {"VARCHAR", "VARCHAR2"},
         {"BIGINT", "INTEGER", "SMALLINT", "DECIMAL", "NUMERIC", "NUMBER"},
         {"DOUBLE", "FLOAT", "DOUBLE_PRECISION"},
