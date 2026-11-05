@@ -129,8 +129,8 @@ def _compare_identity_default(
     metadata_default = metadata_col.server_default
     conn_col_default = conn_col.server_default
     if (
-        conn_col_default is None
-        and metadata_default is None
+        (conn_col_default is None
+        and metadata_default is None)
         or not sqla_compat._server_default_is_identity(
             metadata_default, conn_col_default
         )
