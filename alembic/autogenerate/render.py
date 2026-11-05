@@ -642,6 +642,7 @@ def _ident(name: quoted_name | str | None) -> str | None:
         return str(name)
     elif isinstance(name, str):
         return name
+    return None
 
 
 def _render_potential_expr(
