@@ -377,7 +377,7 @@ def add_column(
     if (
         inline_references
         and len(column.foreign_keys) == 1
-        and (fk := list(column.foreign_keys)[0])
+        and (fk := next(iter(column.foreign_keys)))
         and fk.constraint is not None
         and len(fk.constraint.columns) == 1
     ):
