@@ -51,10 +51,9 @@ class SchemaObjects:
         t = sa_schema.Table(table_name, m, *columns, schema=schema)
         # SQLAlchemy primary key constraint name arg is wrongly typed on
         # the SQLAlchemy side through 2.0.5 at least
-        p = sa_schema.PrimaryKeyConstraint(
+        return sa_schema.PrimaryKeyConstraint(
             *[t.c[n] for n in cols], name=name, **dialect_kw  # type: ignore
         )
-        return p
 
     def foreign_key_constraint(
         self,
@@ -258,12 +257,11 @@ class SchemaObjects:
             schema=schema,
         )
         kw["_table"] = t
-        idx = sa_schema.Index(
+        return sa_schema.Index(
             name,
             *[util.sqla_compat._textual_index_column(t, n) for n in columns],
             **kw,
         )
-        return idx
 
     def _ensure_table_for_fk(self, metadata: MetaData, fk: ForeignKey) -> None:
         """create a placeholder Table object for the referent of a
