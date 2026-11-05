@@ -144,7 +144,7 @@ class _constraint_sig(Generic[_C]):
 
     @util.memoized_property
     def _full_sig(self) -> tuple[Any, ...]:
-        return (self.name,) + self.unnamed
+        return (self.name, *self.unnamed)
 
     def __eq__(self, other) -> bool:
         return self._full_sig == other._full_sig
@@ -242,7 +242,7 @@ class _ix_constraint_sig(_constraint_sig[Index]):
 
     @util.memoized_property
     def unnamed(self):
-        return (self.is_unique,) + self.column_names_optional
+        return (self.is_unique, *self.column_names_optional)
 
 
 class _fk_constraint_sig(_constraint_sig[ForeignKeyConstraint]):
@@ -285,22 +285,31 @@ class _fk_constraint_sig(_constraint_sig[ForeignKeyConstraint]):
             self.target_schema,
             self.target_table,
             tuple(self.target_columns),
-        ) + (
-            (
-                (None if onupdate.lower() == "no action" else onupdate.lower())
-                if onupdate
-                else None
-            ),
-            (
-                (None if ondelete.lower() == "no action" else ondelete.lower())
-                if ondelete
-                else None
-            ),
-            # convert initially + deferrable into one three-state value
-            (
-                "initially_deferrable"
-                if initially and initially.lower() == "deferred"
-                else "deferrable" if deferrable else "not deferrable"
+            *(
+                (
+                    (
+                        None
+                        if onupdate.lower() == "no action"
+                        else onupdate.lower()
+                    )
+                    if onupdate
+                    else None
+                ),
+                (
+                    (
+                        None
+                        if ondelete.lower() == "no action"
+                        else ondelete.lower()
+                    )
+                    if ondelete
+                    else None
+                ),
+                # convert initially + deferrable into one three-state value
+                (
+                    "initially_deferrable"
+                    if initially and initially.lower() == "deferred"
+                    else "deferrable" if deferrable else "not deferrable"
+                ),
             ),
         )
 
