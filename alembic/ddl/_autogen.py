@@ -121,8 +121,9 @@ class _constraint_sig(Generic[_C]):
         # constraint is modified in place, then the sig is wrong.  the mysql
         # impl currently does this, and if we fixed that we can't be sure
         # someone else might do it too, so play it safe.
-        sig = _clsreg[constraint.__visit_name__](is_metadata, impl, constraint)
-        return sig
+        return _clsreg[constraint.__visit_name__](
+            is_metadata, impl, constraint
+        )
 
     def md_name_to_sql_name(self, context: AutogenContext) -> str | None:
         return sqla_compat._get_constraint_final_name(
