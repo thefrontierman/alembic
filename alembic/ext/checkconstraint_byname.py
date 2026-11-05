@@ -34,13 +34,12 @@ def _make_check_constraint(
     params: ReflectedCheckConstraint,
     conn_table: Table,
 ) -> CheckConstraint:
-    const = sa_schema.CheckConstraint(
+    return sa_schema.CheckConstraint(
         params["sqltext"],
         name=params["name"],
         table=conn_table,
         **impl.adjust_reflected_dialect_options(params, "check_constraint"),
     )
-    return const
 
 
 # Current behaviour is kinda unfortunate
