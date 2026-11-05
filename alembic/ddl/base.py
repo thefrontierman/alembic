@@ -294,8 +294,7 @@ def quote_dotted(
 
     if isinstance(name, quoted_name):
         return quote(name)
-    result = ".".join([quote(x) for x in name.split(".")])
-    return result
+    return ".".join([quote(x) for x in name.split(".")])
 
 
 def format_table_name(
