@@ -964,8 +964,7 @@ class CommandLine:
         except util.CommandError as e:
             if options.raiseerr:
                 raise
-            else:
-                util.err(str(e), **config.messaging_opts)
+            util.err(str(e), **config.messaging_opts)
 
     def _inis_from_config(self, options: Namespace) -> tuple[str, str]:
         names = options.config
