@@ -41,7 +41,7 @@ def template_to_file(
         raise CommandError(
             "Template rendering failed; see %s for a "
             "template-oriented traceback." % fname
-        )
+        ) from None
     else:
         with open(dest, "ab" if append_with_newlines else "wb") as f:
             if append_with_newlines:
