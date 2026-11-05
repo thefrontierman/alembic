@@ -53,8 +53,7 @@ def _compare_column_comment(
         log.info("Detected column comment '%s.%s'", tname, cname)
 
         return PriorityDispatchResult.STOP
-    else:
-        return PriorityDispatchResult.CONTINUE
+    return PriorityDispatchResult.CONTINUE
 
 
 def _compare_table_comment(
@@ -87,7 +86,7 @@ def _compare_table_comment(
             )
         )
         return PriorityDispatchResult.STOP
-    elif metadata_comment != conn_comment:
+    if metadata_comment != conn_comment:
         modify_table_ops.ops.append(
             ops.CreateTableCommentOp(
                 tname,
