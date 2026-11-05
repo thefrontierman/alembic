@@ -38,14 +38,14 @@ if TYPE_CHECKING:
     from ..operations.ops import MigrationScript
     from ..script.base import ScriptDirectory
 
-_RevNumber = Optional[Union[str, tuple[str, ...]]]
+_RevNumber = Optional[str | tuple[str, ...]]
 
 ProcessRevisionDirectiveFn = Callable[
     [MigrationContext, _GetRevArg, list["MigrationScript"]], None
 ]
 
 RenderItemFn = Callable[
-    [str, Any, "AutogenContext"], Union[str, Literal[False]]
+    [str, Any, "AutogenContext"], str | Literal[False]
 ]
 
 NameFilterType = Literal[
