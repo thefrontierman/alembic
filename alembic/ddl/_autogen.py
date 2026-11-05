@@ -11,7 +11,6 @@ from typing import NamedTuple
 from typing import TYPE_CHECKING
 from typing import TypeGuard
 from typing import TypeVar
-from typing import Union
 
 from sqlalchemy.sql.schema import CheckConstraint
 from sqlalchemy.sql.schema import Constraint
@@ -28,7 +27,7 @@ if TYPE_CHECKING:
     from alembic.autogenerate.api import AutogenContext
     from alembic.ddl.impl import DefaultImpl
 
-CompareConstraintType = Union[Constraint, Index]
+CompareConstraintType = Constraint | Index
 
 _C = TypeVar("_C", bound=CompareConstraintType)
 
