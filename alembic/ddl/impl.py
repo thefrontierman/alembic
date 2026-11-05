@@ -619,9 +619,7 @@ class DefaultImpl(metaclass=ImplMeta):
 
         if not self._column_types_match(inspector_params, metadata_params):
             return True
-        if not self._column_args_match(inspector_params, metadata_params):
-            return True
-        return False
+        return not self._column_args_match(inspector_params, metadata_params)
 
     def compare_server_default(
         self,
