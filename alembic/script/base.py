@@ -295,7 +295,7 @@ class ScriptDirectory:
         an actual revision number."""
 
         with self._catch_revision_errors():
-            rev, branch_name = self.revision_map._resolve_revision_number(id_)
+            rev, _ = self.revision_map._resolve_revision_number(id_)
 
         if not rev:
             # convert () to None
