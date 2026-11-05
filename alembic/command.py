@@ -310,7 +310,7 @@ def revision(
         # in addition to the hooks present within each run_migrations() call,
         # or at the end of env.py run_migrations_online().
 
-    scripts = [script for script in revision_context.generate_scripts()]
+    scripts = list(revision_context.generate_scripts())
     if len(scripts) == 1:
         return scripts[0]
     else:
