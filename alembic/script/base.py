@@ -45,6 +45,10 @@ _legacy_rev = re.compile(r"([a-f0-9]+)\.py$")
 _slug_re = re.compile(r"\w+")
 _default_file_template = "%(rev)s_%(slug)s"
 
+_empty_messaging_opts: MessagingOptions = cast(
+    "MessagingOptions", util.EMPTY_DICT
+)
+
 
 class ScriptDirectory:
     """Provides operations upon an Alembic script directory.
@@ -77,9 +81,7 @@ class ScriptDirectory:
         timezone: str | None = None,
         hooks: list[PostWriteHookConfig] = [],
         recursive_version_locations: bool = False,
-        messaging_opts: MessagingOptions = cast(
-            "MessagingOptions", util.EMPTY_DICT
-        ),
+        messaging_opts: MessagingOptions = _empty_messaging_opts,
     ) -> None:
         self.dir = _preserving_path_as_str(dir)
         self.version_locations = [
