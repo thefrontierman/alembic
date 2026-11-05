@@ -92,7 +92,7 @@ class MySQLImpl(DefaultImpl):
         {"BOOL", "TINYINT"},
         {"JSON", "LONGTEXT"},
     )
-    type_arg_extract = [r"character set ([\w\-_]+)", r"collate ([\w\-_]+)"]
+    type_arg_extract = (r"character set ([\w\-_]+)", r"collate ([\w\-_]+)")
 
     def render_ddl_sql_expr(
         self,
