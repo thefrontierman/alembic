@@ -426,9 +426,7 @@ class EnvironmentContext(util.ModuleClsProxy):
         include_name: IncludeNameFn | None = None,
         include_object: IncludeObjectFn | None = None,
         include_schemas: bool = False,
-        process_revision_directives: None | (
-            ProcessRevisionDirectiveFn
-        ) = None,
+        process_revision_directives: ProcessRevisionDirectiveFn | None = None,
         compare_type: bool | CompareType = True,
         compare_server_default: bool | CompareServerDefault = False,
         render_item: RenderItemFn | None = None,
