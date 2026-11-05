@@ -160,7 +160,8 @@ class ModuleClsProxy(metaclass=_ModuleClsMeta):
                     if oldname in kw:
                         warnings.warn(
                             "Argument %r is now named %r "
-                            "for method %s()." % (oldname, newname, fn_name)
+                            "for method %s()." % (oldname, newname, fn_name),
+                            stacklevel=1,
                         )
                         return_kw[newname] = kw.pop(oldname)
                 return_kw.update(kw)
