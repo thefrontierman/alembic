@@ -142,9 +142,9 @@ class BatchOperationsImpl:
                     existing_table = Table(
                         self.table_name,
                         m1,
+                        *self.reflect_args,
                         schema=self.schema,
                         autoload_with=self.operations.get_bind(),
-                        *self.reflect_args,
                         **self.reflect_kwargs,
                     )
                     reflected = True
@@ -421,11 +421,11 @@ class ApplyBatchImpl:
 
             idx_copy = Index(
                 idx_existing.name,
-                unique=idx_existing.unique,
                 *[
                     _copy_expression(expr, self.new_table)
                     for expr in _idx_table_bound_expressions(idx_existing)
                 ],
+                unique=idx_existing.unique,
                 _table=self.new_table,
                 **idx_existing.kwargs,
             )
@@ -435,11 +435,11 @@ class ApplyBatchImpl:
             idx.append(
                 Index(
                     index.name,
-                    unique=index.unique,
                     *[
                         self._copy_new_index_expression(expr)
                         for expr in _idx_table_bound_expressions(index)
                     ],
+                    unique=index.unique,
                     _table=self.new_table,
                     **index.kwargs,
                 )
