@@ -1074,18 +1074,15 @@ def _fk_colspec(
         and not fk.link_to_name
         and fk.parent is not None
         and fk.parent.table is not None
+        and namespace_metadata is not None
+        and table_fullname in namespace_metadata.tables
     ):
         # try to resolve the remote table in order to adjust for column.key.
         # the FK constraint needs to be rendered in terms of the column
         # name.
-
-        if (
-            namespace_metadata is not None
-            and table_fullname in namespace_metadata.tables
-        ):
-            col = namespace_metadata.tables[table_fullname].c.get(colname)
-            if col is not None:
-                colname = _ident(col.name)
+        col = namespace_metadata.tables[table_fullname].c.get(colname)
+        if col is not None:
+            colname = _ident(col.name)
 
     colspec = "%s.%s" % (table_fullname, colname)
 
