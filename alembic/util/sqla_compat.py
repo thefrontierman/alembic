@@ -607,9 +607,7 @@ def is_expression_index(index: Index) -> bool:
 def is_expression(expr: Any) -> bool:
     while isinstance(expr, UnaryExpression):
         expr = expr.element
-    if not isinstance(expr, ColumnClause) or expr.is_literal:
-        return True
-    return False
+    return not isinstance(expr, ColumnClause) or expr.is_literal
 
 
 def _inherit_schema_deprecated() -> bool:
