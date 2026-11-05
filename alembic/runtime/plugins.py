@@ -5,7 +5,7 @@ import logging
 import re
 from re import Pattern
 from types import ModuleType
-from typing import Callable
+from collections.abc import Callable
 from typing import TYPE_CHECKING
 
 from .. import util
