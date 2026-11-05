@@ -212,7 +212,7 @@ class ModuleClsProxy(metaclass=_ModuleClsMeta):
         )
         lcl: MutableMapping[str, Any] = {}
 
-        exec(func_text, cast("Dict[str, Any]", globals_), lcl)
+        exec(func_text, cast("dict[str, Any]", globals_), lcl)
         return cast("Callable[..., Any]", lcl[name])
 
 
