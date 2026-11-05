@@ -640,7 +640,7 @@ class RevisionContext:
 
     def _default_revision(self) -> MigrationScript:
         command_args: dict[str, Any] = self.command_args
-        op = ops.MigrationScript(
+        return ops.MigrationScript(
             rev_id=command_args["rev_id"] or util.rev_id(),
             message=command_args["message"],
             upgrade_ops=ops.UpgradeOps([]),
@@ -651,7 +651,6 @@ class RevisionContext:
             version_path=command_args["version_path"],
             depends_on=command_args["depends_on"],
         )
-        return op
 
     def generate_scripts(self) -> Iterator[Script | None]:
         for generated_revision in self.generated_revisions:
