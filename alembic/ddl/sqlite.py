@@ -138,10 +138,7 @@ class SQLiteImpl(DefaultImpl):
             return False
         elif re.match(r"^'.+'$", expr):
             return False
-        elif re.match(r"^\(.+\)$", expr):
-            return False
-        else:
-            return True
+        return not re.match(r"^\(.+\)$", expr)
 
     def autogen_column_reflect(
         self,
