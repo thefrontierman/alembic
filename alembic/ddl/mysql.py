@@ -309,9 +309,7 @@ class MySQLImpl(DefaultImpl):
             )
 
             if onupdate_ins:
-                if not onupdate_met:
-                    return True
-                elif onupdate_ins.group(2) != onupdate_met.group(2):
+                if not onupdate_met or onupdate_ins.group(2) != onupdate_met.group(2):
                     return True
 
                 rendered_inspector_default = onupdate_ins.group(1)
