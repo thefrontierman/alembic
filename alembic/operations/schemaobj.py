@@ -95,16 +95,14 @@ class SchemaObjects:
         )
 
         tname = (
-            "%s.%s" % (referent_schema, referent)
-            if referent_schema
-            else referent
+            f"{referent_schema}.{referent}" if referent_schema else referent
         )
 
         dialect_kw["match"] = match
 
         f = sa_schema.ForeignKeyConstraint(
             local_cols,
-            ["%s.%s" % (tname, n) for n in remote_cols],
+            [f"{tname}.{n}" for n in remote_cols],
             name=name,
             onupdate=onupdate,
             ondelete=ondelete,
@@ -177,8 +175,7 @@ class SchemaObjects:
             const = types[type_]
         except KeyError as ke:
             raise TypeError(
-                "'type' can be one of %s"
-                % ", ".join(sorted(repr(x) for x in types))
+                f"'type' can be one of {', '.join(sorted(repr(x) for x in types))}"
             ) from ke
         else:
             const = const(name=name)
