@@ -115,8 +115,7 @@ class Plugin:
             ]
             if not include_matches:
                 continue
-            else:
-                matched_expressions.update(include_matches)
+            matched_expressions.update(include_matches)
 
             log.info("setting up autogenerate plugin %s", plugin.name)
             comparators.populate_with(plugin.autogenerate_comparators)
