@@ -375,7 +375,7 @@ class PostgresqlImpl(DefaultImpl):
             # print(f"CONN ORIG: {r_compile!r} CLEANUP: {r_text!r}")
             if m_text == r_text:
                 continue  # expressions these are equal
-            elif m_compile.strip().endswith("_ops") and (
+            if m_compile.strip().endswith("_ops") and (
                 " " in m_compile or ")" in m_compile  # is an expression
             ):
                 skip.append(
