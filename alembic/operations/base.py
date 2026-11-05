@@ -138,10 +138,7 @@ class AbstractOperations(util.ModuleClsProxy):
 
             defaulted_vals: tuple[Any, ...]
 
-            if num_defaults:
-                defaulted_vals = tuple(name_args[0 - num_defaults :])
-            else:
-                defaulted_vals = ()
+            defaulted_vals = tuple(name_args[0 - num_defaults:]) if num_defaults else ()
 
             defaulted_vals += tuple(spec[4])
             # here, we are using formatargspec in a different way in order
