@@ -197,6 +197,5 @@ def visit_identity_column(
         # drop identity
         text += "DROP IDENTITY"
         return text
-    else:
-        text += compiler.visit_identity_column(element.default)
-        return text
+    text += compiler.visit_identity_column(element.default)
+    return text
