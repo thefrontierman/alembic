@@ -72,5 +72,4 @@ def _default_editors() -> list[str]:
     # most commonly installed editor (nano/vim)
     if is_posix:
         return ["sensible-editor", "editor", "nano", "vim", "code"]
-    else:
-        return ["code.exe", "notepad++.exe", "notepad.exe"]
+    return ["code.exe", "notepad++.exe", "notepad.exe"]
