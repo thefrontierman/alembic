@@ -714,8 +714,8 @@ def current(
             raise util.DatabaseNotAtHead(
                 "Database is not on all head revisions"
             )
-        for rev in script.get_all_current(rev):
-            config.print_stdout(rev.cmd_format(verbose))
+        for current_rev in script.get_all_current(rev):
+            config.print_stdout(current_rev.cmd_format(verbose))
 
         return []
 
