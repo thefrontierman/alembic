@@ -105,7 +105,9 @@ def _compare_computed_default(
 
 
 def _warn_computed_not_supported(tname: str, cname: str) -> None:
-    util.warn("Computed default on %s.%s cannot be modified" % (tname, cname))
+    util.warn(
+        f"Computed default on {tname}.{cname} cannot be modified"
+    )
 
 
 def _compare_identity_default(
