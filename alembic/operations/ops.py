@@ -1802,8 +1802,7 @@ class AlterColumnOp(AlterTableOp):
         for kw in self.kw:
             if kw.startswith("modify_"):
                 return True
-        else:
-            return False
+        return False
 
     def reverse(self) -> AlterColumnOp:
         kw = self.kw.copy()
