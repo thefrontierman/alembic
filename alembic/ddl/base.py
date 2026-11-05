@@ -306,8 +306,7 @@ def format_table_name(
     quote = functools.partial(compiler.preparer.quote)
     if schema:
         return quote_dotted(schema, quote) + "." + quote(name)
-    else:
-        return quote(name)
+    return quote(name)
 
 
 def format_column_name(
