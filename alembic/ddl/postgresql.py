@@ -366,7 +366,7 @@ class PostgresqlImpl(DefaultImpl):
             # no point going further, return early
             return ComparisonResult.Different(msg)
         skip = []
-        for pos, (m_e, r_e) in enumerate(zip(m_exprs, r_exprs), 1):
+        for pos, (m_e, r_e) in enumerate(zip(m_exprs, r_exprs, strict=True), 1):
             m_compile = self._compile_element(m_e)
             m_text = self._cleanup_index_expr(metadata_index, m_compile)
             # print(f"META ORIG: {m_compile!r} CLEANUP: {m_text!r}")
