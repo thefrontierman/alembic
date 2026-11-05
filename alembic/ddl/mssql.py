@@ -164,14 +164,17 @@ class MSSQLImpl(DefaultImpl):
             **kw,
         )
 
-        if server_default is not False and used_default is False:
-            if server_default is not None:
-                super().alter_column(
-                    table_name,
-                    column_name,
-                    schema=schema,
-                    server_default=server_default,
-                )
+        if (
+            server_default is not False
+            and used_default is False
+            and server_default is not None
+        ):
+            super().alter_column(
+                table_name,
+                column_name,
+                schema=schema,
+                server_default=server_default,
+            )
 
         if name is not None:
             super().alter_column(
