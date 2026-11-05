@@ -68,14 +68,14 @@ class ModuleClsProxy(metaclass=_ModuleClsMeta):
 
     def _install_proxy(self) -> None:
         attr_names, modules = self._setups[self.__class__]
-        for globals_, locals_ in modules:
+        for globals_, _ in modules:
             globals_["_proxy"] = self
             for attr_name in attr_names:
                 globals_[attr_name] = getattr(self, attr_name)
 
     def _remove_proxy(self) -> None:
         attr_names, modules = self._setups[self.__class__]
-        for globals_, locals_ in modules:
+        for globals_, _ in modules:
             globals_["_proxy"] = None
             for attr_name in attr_names:
                 del globals_[attr_name]
