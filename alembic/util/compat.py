@@ -87,7 +87,7 @@ else:
                         continue
                 raise ValueError(
                     f"{path} is not in the same subtree as {other}"
-                )
+                ) from None
             else:
                 raise
 
