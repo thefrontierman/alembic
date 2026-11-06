@@ -122,7 +122,7 @@ def _get_required_option(options: dict, name: str) -> str:
 def _run_hook(
     path: str, options: dict, ignore_output: bool, command: list[str]
 ) -> None:
-    cwd: str | None = options.get("cwd", None)
+    cwd: str | None = options.get("cwd")
     cmdline_options_str = options.get("options", "")
     cmdline_options_list = _parse_cmdline_options(cmdline_options_str, path)
 
