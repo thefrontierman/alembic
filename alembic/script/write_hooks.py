@@ -102,11 +102,10 @@ def _parse_cmdline_options(cmdline_options_str: str, path: str) -> list[str]:
     cmdline_options_list = shlex.split(
         cmdline_options_str, posix=compat.is_posix
     )
-    cmdline_options_list = [
+    return [
         option.replace(REVISION_SCRIPT_TOKEN, path)
         for option in cmdline_options_list
     ]
-    return cmdline_options_list
 
 
 def _get_required_option(options: dict, name: str) -> str:
