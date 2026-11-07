@@ -8,8 +8,8 @@ import os
 import shlex
 import subprocess
 import sys
+from collections.abc import Callable
 from typing import Any
-from typing import Callable
 from typing import TYPE_CHECKING
 
 from .. import util
